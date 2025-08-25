@@ -65,15 +65,20 @@
     <main id="content">
         <section id="home" class="hero section">
             <div class="container">
-                <p class="eyebrow">Senior Software Engineer</p>
-                <h1 class="headline">I design and build resilient, delightful software.</h1>
-                <p class="subhead">Focused on end-to-end product engineering: from system design and performance to UX polish and developer experience.</p>
-                <div class="hero-cta">
+                <p class="eyebrow" data-reveal>Senior Software Engineer</p>
+                <h1 class="headline" data-reveal>I design and build resilient, delightful software.</h1>
+                <p class="subhead" data-reveal>Focused on end-to-end product engineering: from system design and performance to UX polish and developer experience.</p>
+                <div class="hero-cta" data-reveal>
                     <a class="btn primary" href="#work">View Work</a>
                     <a class="btn secondary" href="#contact">Get in touch</a>
                 </div>
             </div>
             <div class="hero-bg" aria-hidden="true"></div>
+            <div class="parallax" aria-hidden="true">
+                <span class="blob blob-a" data-depth="0.15"></span>
+                <span class="blob blob-b" data-depth="0.3"></span>
+                <span class="blob blob-c" data-depth="0.45"></span>
+            </div>
         </section>
 
         <section id="work" class="section">
@@ -84,7 +89,7 @@
                 </div>
                 <div class="grid work-grid">
                     <!-- Repeatable project card pattern -->
-                    <article class="card project">
+                    <article class="card project" data-reveal data-tilt>
                         <a class="card-link" href="#" aria-label="Project: Platform Observability">
                             <figure class="thumb"><img src="assets/images/project-1.jpg" alt="Dashboard UI of observability platform"></figure>
                             <div class="card-body">
@@ -96,7 +101,7 @@
                             </div>
                         </a>
                     </article>
-                    <article class="card project">
+                    <article class="card project" data-reveal data-tilt>
                         <a class="card-link" href="#" aria-label="Project: Realtime Collaboration Editor">
                             <figure class="thumb"><img src="assets/images/project-2.jpg" alt="Collaborative editing UI"></figure>
                             <div class="card-body">
@@ -108,7 +113,7 @@
                             </div>
                         </a>
                     </article>
-                    <article class="card project">
+                    <article class="card project" data-reveal data-tilt>
                         <a class="card-link" href="#" aria-label="Project: Pricing Engine">
                             <figure class="thumb"><img src="assets/images/project-3.jpg" alt="Graphs illustrating pricing models"></figure>
                             <div class="card-body">
@@ -126,7 +131,7 @@
 
         <section id="about" class="section alt">
             <div class="container split">
-                <div>
+                <div data-reveal>
                     <h2>About</h2>
                     <p>I lead engineering initiatives across the stack. I enjoy shaping product direction, mentoring teams, and solving hard problems with clarity.</p>
                     <ul class="bullets">
@@ -136,7 +141,7 @@
                         <li>UI engineering with accessibility and performance in mind</li>
                     </ul>
                 </div>
-                <aside class="aside">
+                <aside class="aside" data-reveal>
                     <div class="stat">
                         <span class="value">10+ yrs</span>
                         <span class="label">Experience</span>
@@ -146,7 +151,7 @@
                         <span class="label">Value delivered</span>
                     </div>
                     <div class="stat">
-                        <span class="value">0e1s</span>
+                        <span class="value">0.1s</span>
                         <span class="label">Performance target</span>
                     </div>
                 </aside>
@@ -160,15 +165,15 @@
                     <p>Notes on engineering, leadership, and product.</p>
                 </div>
                 <ul class="list posts">
-                    <li>
+                    <li data-reveal>
                         <a href="#">Debugging distributed systems: a pragmatic guide</a>
                         <span class="meta">2025</span>
                     </li>
-                    <li>
+                    <li data-reveal>
                         <a href="#">Rethinking feature flags at scale</a>
                         <span class="meta">2024</span>
                     </li>
-                    <li>
+                    <li data-reveal>
                         <a href="#">Designing APIs for humans</a>
                         <span class="meta">2024</span>
                     </li>
@@ -182,7 +187,7 @@
                     <h2>Contact</h2>
                     <p>Open to advisory, consulting, and interesting full-time roles.</p>
                 </div>
-                <form class="contact-form" name="contact" method="POST" data-netlify="true">
+                <form class="contact-form" name="contact" method="POST" data-netlify="true" data-reveal>
                     <input type="hidden" name="form-name" value="contact">
                     <div class="grid form-grid">
                         <label>

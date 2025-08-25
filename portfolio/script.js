@@ -67,3 +67,74 @@ document.querySelectorAll('a[href^="#"]').forEach(function(anchor){
     window.scrollTo({top: y, behavior: 'smooth'});
   });
 });
+
+// Parallax blobs
+(function(){
+  const container = document.querySelector('.parallax');
+  if(!container) return;
+  const blobs = Array.from(container.querySelectorAll('[data-depth]'));
+  function update(e){
+    const cx = window.innerWidth / 2;
+    const cy = window.innerHeight / 2;
+    const x = (e.clientX - cx) / cx;
+    const y = (e.clientY - cy) / cy;
+    blobs.forEach(function(b){
+      const d = parseFloat(b.getAttribute('data-depth')) || 0;
+      b.style.transform = 'translate(' + (x * 20 * d) + 'px,' + (y * 20 * d) + 'px)';
+    });
+  }
+  window.addEventListener('mousemove', update, {passive:true});
+})();
+
+// Scroll reveal
+(function(){
+  const items = Array.from(document.querySelectorAll('[data-reveal]'));
+  if(!items.length) return;
+  const io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('revealed');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {root:null, rootMargin:'-10% 0px', threshold:0.1});
+  items.forEach(function(el){ io.observe(el); });
+})();
+
+// Card tilt
+(function(){
+  const cards = Array.from(document.querySelectorAll('[data-tilt]'));
+  if(!cards.length) return;
+  cards.forEach(function(card){
+    let raf = 0;
+    function onMove(e){
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(function(){
+        const rect = card.getBoundingClientRect();
+        const px = (e.clientX - rect.left) / rect.width - 0.5;
+        const py = (e.clientY - rect.top) / rect.height - 0.5;
+        const rx = (py * -8).toFixed(2);
+        const ry = (px * 8).toFixed(2);
+        card.classList.add('tilting');
+        card.style.transform = 'perspective(800px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateZ(0)';
+      });
+    }
+    function reset(){
+      card.classList.remove('tilting');
+      card.style.transform = '';
+    }
+    card.addEventListener('mousemove', onMove);
+    card.addEventListener('mouseleave', reset);
+    card.addEventListener('touchstart', function(){ card.classList.add('tilting'); }, {passive:true});
+    card.addEventListener('touchend', reset);
+  });
+})();
+
+// Cursor spotlight
+(function(){
+  function onMove(e){
+    document.body.style.setProperty('--mx', e.clientX + 'px');
+    document.body.style.setProperty('--my', e.clientY + 'px');
+  }
+  window.addEventListener('pointermove', onMove, {passive:true});
+})();
